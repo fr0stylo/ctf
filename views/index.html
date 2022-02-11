@@ -1,0 +1,53 @@
+{{ define "index" }}
+{{ template "header" }}
+  <h1>Vartotojas: {{ .Name }}</h1>
+  <h1>Uzrasai:</h1>
+  {{ range .Items }}
+    {{ . }}
+  {{- end -}}
+{{ template "foot" }}
+{{ end }}
+
+
+{{ define "header" }}
+<!DOCTYPE html>
+
+<head></head>
+
+<body>
+{{- end }}
+
+{{ define "foot" }}
+</body>
+
+<footer>
+
+</footer>
+{{- end }}
+
+{{ define "register" }}
+{{ template "header" }}
+
+<form method="post" style="display:flex; width: 200px; flex-direction: column;">
+  <div style="justify-content: space-between">
+    <label for="name">Vardas</label>
+    <input name="name" id="name">
+  </div>
+  <div style="justify-content: space-between">
+    <label for="password">Slaptazodis</label>
+    <input name="password" id="password">
+    <input type="hidden" name="next" id="next" value="{{ . }}">
+  </div>
+
+  <button type="submit">Pateikti</button>
+</form>
+
+{{ template "foot" }}
+{{ end }}
+
+{{ define "redirect" }}
+{{ template "header" }}
+
+<script>window.location.href = "{{ . }}";</script>
+{{ template "foot" }}
+{{ end }}
